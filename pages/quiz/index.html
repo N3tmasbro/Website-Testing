@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Leaderboard</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.max-points {
+  text-align: right;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Leaderboard</h1>
+    <div class="max-points">maximum of 84 points</div>
+    <table>
+      <tr>
+        <th>Pos.</th>
+        <th>Name</th>
+        <th>Entered on</th>
+        <th>Points</th>
+        <th>Result</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Sarah University</td>
+        <td>Apr 26, 2 023</td>
+        <td>80</td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Tech Institute</td>
+        <td>Apr 25, 2023</td>
+        <td>75</td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>City College</td>
+        <td>Apr 24, 2023</td>
+        <td>70</td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>State University</td>
+        <td>Apr 23, 2023</td>
+        <td>65</td>
+        <td>Passed</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Local Academy</td>
+        <td>Apr 22, 2023</td>
+        <td>60</td>
+        <td>Passed</td>
+      </tr>
+    </table>
+    <button>Refresh Leaderboard</button>
+  </div>
+</body>
+</html>

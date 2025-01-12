@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Vocabulary - STARLearn</title>
+  <link rel="stylesheet" href="../css/home.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #6c63ff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .search-bar {
+      text-align: center;
+      margin: 20px 0;
+      margin-top: 10%;
+    }
+
+    .search-bar input {
+      width: 60%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .quiz-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .quiz-box {
+        width: 200px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .quiz-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .quiz-box a:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+    }
+
+
+    .quiz-box img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .quiz-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .quiz-info {
+        font-size: 14px;
+        color: #555;
+    }
+  </style>
+</head>
+
+<body>
+    <header>
+        <a href="../pages/home.html" style="text-decoration: none;">
+          <h1 class='logo'>STARLearn</h1>
+        </a>
+        <nav>
+          <a href="../pages/home.html">Home</a>
+          <a href="../pages/courses.html">All Courses</a>
+          <a href="../pages/quiz.html"  style="font-weight: bolder; background-color:lightgrey ;">Quiz</a>
+          <a href="account.php">My Account</a>
+          <a href="../backend/logout.php">Log out</a>
+        </nav>
+        <div class="separator"></div>
+      </header>
+
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Cari topik atau kategori..." onkeyup="searchQuiz()">
+      </div>
+      
+      <div class="quiz-container" id="quizContainer">
+        <div class="quiz-box" data-title="Synonyms and Antonyms">
+            <a href="quiz/quiz1.html" style="text-decoration: none; color: inherit;">
+              <img src="tes.png" alt="Synonyms and Antonyms">
+              <p class="quiz-title">Synonyms and Antonyms</p>
+              <p class="quiz-info">50+ Questions</p>
+            </a>
+          </div>
+      
+        <div class="quiz-box" data-title="Word Formation">
+          <img src="../images/word_formation.jpg" alt="Word Formation">
+          <p class="quiz-title">Word Formation</p>
+          <p class="quiz-info">300K kegiatan</p>
+        </div>
+      
+        <div class="quiz-box" data-title="Idioms and Phrases">
+          <img src="../images/idioms.jpg" alt="Idioms and Phrases">
+          <p class="quiz-title">Idioms and Phrases</p>
+          <p class="quiz-info">250K kegiatan</p>
+        </div>
+      
+        <div class="quiz-box" data-title="Collocations">
+          <img src="../images/collocations.jpg" alt="Collocations">
+          <p class="quiz-title">Collocations</p>
+          <p class="quiz-info">200K kegiatan</p>
+        </div>
+      
+        <div class="quiz-box" data-title="Contextual Vocabulary">
+          <img src="../images/contextual.jpg" alt="Contextual Vocabulary">
+          <p class="quiz-title">Contextual Vocabulary</p>
+          <p class="quiz-info">150K kegiatan</p>
+        </div>
+      
+        <div class="quiz-box" data-title="Word Usage and Grammar">
+          <img src="../images/grammar.jpg" alt="Word Usage and Grammar">
+          <p class="quiz-title">Word Usage and Grammar</p>
+          <p class="quiz-info">100K kegiatan</p>
+        </div>
+      </div>
+
+  <script>
+    function searchQuiz() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const quizContainer = document.getElementById("quizContainer");
+      const quizzes = quizContainer.getElementsByClassName("quiz-box");
+
+      for (let i = 0; i < quizzes.length; i++) {
+        const title = quizzes[i].getAttribute("data-title").toLowerCase();
+
+        if (title.includes(input)) {
+          quizzes[i].style.display = "flex";
+        } else {
+          quizzes[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

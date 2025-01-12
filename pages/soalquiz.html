@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .quiz-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .options button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .options button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #4CAF50;
+        }
+
+        .score {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div id="question-container">
+            <!-- Soal akan dimasukkan secara dinamis menggunakan JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Soal-soal untuk quiz
+        const questions = [
+            {
+                question: "What is the synonym of 'happy'?",
+                options: ["Sad", "Joyful", "Angry"],
+                correct: "Joyful"
+            },
+            {
+                question: "What is the opposite of 'big'?",
+                options: ["Tiny", "Large", "Fast"],
+                correct: "Tiny"
+            },
+            {
+                question: "Which word means 'to consume food'?",
+                options: ["Run", "Eat", "Walk"],
+                correct: "Eat"
+            }
+        ];
+
+        let currentQuestionIndex = 0;
+        let correctAnswers = 0; // Menyimpan jumlah jawaban benar
+        const scorePerQuestion = 10; // Skor per jawaban benar
+        let totalScore = 0; // Skor total
+
+        function loadQuestion() {
+            const questionContainer = document.getElementById("question-container");
+            const currentQuestion = questions[currentQuestionIndex];
+
+            questionContainer.innerHTML = `
+                <div class="question">${currentQuestion.question}</div>
+                <div class="options">
+                    ${currentQuestion.options
+                        .map(
+                            (option) =>
+                                `<button onclick="submitAnswer('${option}')">${option}</button>`
+                        )
+                        .join("")}
+                </div>
+            `;
+        }
+
+        function submitAnswer(selected) {
+            const currentQuestion = questions[currentQuestionIndex];
+            if (selected === currentQuestion.correct) {
+                alert("Correct!");
+                correctAnswers++; // Tambahkan jumlah jawaban benar
+                totalScore += scorePerQuestion; // Tambahkan skor
+            } else {
+                alert("Wrong answer. The correct answer is: " + currentQuestion.correct);
+            }
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                displayResult(); // Tampilkan hasil akhir setelah semua soal dijawab
+            }
+        }
+
+        function displayResult() {
+            const questionContainer = document.getElementById("question-container");
+            questionContainer.innerHTML = `
+                <div class="result">
+                    Quiz Completed!
+                </div>
+                <div class="score">
+                    Correct Answers: ${correctAnswers}/${questions.length}<br>
+                    Total Score: ${totalScore}
+                </div>
+                <button onclick="restartQuiz()">Restart Quiz</button>
+            `;
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            correctAnswers = 0;
+            totalScore = 0;
+            loadQuestion(); // Memuat ulang soal pertama
+        }
+
+        // Memuat soal pertama saat halaman dibuka
+        loadQuestion();
+    </script>
+</body>
+</html>

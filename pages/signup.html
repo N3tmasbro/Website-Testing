@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - STARLearn</title>
+  <link rel="stylesheet" href="../css/authority.css">
+</head>
+
+<body>
+  <div class="auth">
+    <a href="../index.html" style="text-decoration: none;">
+      <h1 class="auth-logo">STARLearn</h1>
+    </a>
+
+    <p class="p1">Sign Up</p>
+    <p class="p2">Learn on your own time from top universities and businesses.</p>
+
+    <form method="POST" action="../backend/register.php">
+      <div class="auth-form">
+        <!-- Input untuk nama -->
+        <div class="entries">
+          <label for="name" class="sr-only">Full Name</label>
+          <img src="../background/user.png" alt="User Icon">
+          <input class="input" type="text" id="name" name="name" placeholder="First & Last name" maxlength="50" required>
+        </div>
+
+        <!-- Input untuk email -->
+        <div class="entries">
+          <label for="email" class="sr-only">Email</label>
+          <img src="../background/email.png" alt="Email Icon">
+          <input class="input" type="email" id="email" name="email" placeholder="Email" autocomplete="on" required>
+        </div>
+
+        <!-- Input untuk password -->
+        <div class="entries">
+          <label for="password" class="sr-only">Password</label>
+          <img src="../background/lock.png" alt="Lock Icon">
+          <input class="input" type="password" id="password" name="password" placeholder="Your password" minlength="6" required>
+          <button type="button" onclick="togglePassword()">👁</button>
+        </div>
+      </div>
+
+      <!-- Tombol submit -->
+      <button class="create-account" type="submit">Create An Account</button>
+    </form>
+
+    <p class="p2" style="text-align: center;">Already on STARLearn? <a href="login.html">Log in</a></p>
+  </div>
+
+  <script>
+    // Script untuk toggle password visibility
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+      } else {
+        passwordField.type = 'password';
+      }
+    }
+  </script>
+</body>
+
+</html>
